@@ -1,0 +1,490 @@
+
+/* =========================================
+   WEATHER DASHBOARD
+   SkillMe Internship - Week 1
+========================================= */
+
+
+/* ---------- CSS VARIABLES ---------- */
+
+:root {
+    --bg-primary: #07111f;
+    --bg-secondary: #101d31;
+    --bg-card: #14243b;
+    --bg-card-light: #1b304b;
+
+    --primary-color: #38bdf8;
+    --secondary-color: #818cf8;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #b6c5d8;
+
+    --border-color: rgba(255, 255, 255, 0.10);
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+    --border-radius: 20px;
+}
+
+
+/* ---------- GENERAL RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ---------- BODY ---------- */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #142b49,
+            transparent 40%
+        ),
+        var(--bg-primary);
+
+    color: var(--text-primary);
+
+    min-height: 100vh;
+
+    padding: 30px 20px;
+}
+
+
+/* ---------- HEADER ---------- */
+
+header {
+    max-width: 1200px;
+    margin: 0 auto 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+}
+
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: var(--text-primary);
+}
+
+
+/* ---------- SEARCH INPUT ---------- */
+
+header input[type="search"] {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 16px 20px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+
+    background-color: var(--bg-secondary);
+
+    color: var(--text-primary);
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+
+header input[type="search"]::placeholder {
+    color: var(--text-secondary);
+}
+
+
+header input[type="search"]:focus {
+    border-color: var(--primary-color);
+
+    box-shadow:
+        0 0 0 4px rgba(56, 189, 248, 0.15);
+}
+
+
+/* ---------- SEARCH BUTTON ---------- */
+
+header button {
+    padding: 14px 30px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+
+    color: #07111f;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+header button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(56, 189, 248, 0.25);
+}
+
+
+/* ---------- CURRENT WEATHER ---------- */
+
+.currentweather {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #18385c,
+        #14243b,
+        #202d51
+    );
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 30px;
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Decorative glow */
+
+.currentweather::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    background: rgba(56, 189, 248, 0.10);
+
+    border-radius: 50%;
+
+    top: -100px;
+    right: -80px;
+
+    filter: blur(30px);
+}
+
+
+.currentweather h2 {
+    font-size: 2rem;
+
+    margin-bottom: 20px;
+
+    position: relative;
+}
+
+
+.currentweather p {
+    font-size: 3rem;
+
+    font-weight: bold;
+
+    margin: 25px 0;
+
+    color: var(--primary-color);
+
+    position: relative;
+}
+
+
+.currentweather hr {
+    border: none;
+
+    height: 1px;
+
+    background-color: var(--border-color);
+
+    margin: 25px 0;
+}
+
+
+.currentweather {
+    font-size: 1.1rem;
+
+    color: var(--text-secondary);
+}
+
+
+/* ---------- FORECAST SECTION ---------- */
+
+.nextforecast {
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+.nextforecast h3 {
+    font-size: 1.6rem;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    letter-spacing: 2px;
+
+    color: var(--primary-color);
+}
+
+
+/* ---------- FORECAST CONTAINER ---------- */
+
+.forecast-container {
+    display: flex;
+
+    gap: 20px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+
+/* ---------- FORECAST CARDS ---------- */
+
+.card {
+    flex: 1;
+
+    min-width: 140px;
+    max-width: 180px;
+
+    background: linear-gradient(
+        180deg,
+        var(--bg-card-light),
+        var(--bg-card)
+    );
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--border-radius);
+
+    box-shadow: var(--shadow);
+
+    transition: 0.3s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--primary-color);
+
+    box-shadow:
+        0 15px 35px rgba(56, 189, 248, 0.15);
+}
+
+
+/* ---------- CARD CONTENT ---------- */
+
+.card-body1,
+.card-body2,
+.card-body3,
+.card-body4,
+.card-body5,
+.card-body6,
+.card-body7 {
+    padding: 25px 15px;
+
+    text-align: center;
+}
+
+
+/* ---------- DAY NAME ---------- */
+
+.card-title1,
+.card-title2,
+.card-title3,
+.card-title4,
+.card-title5,
+.card-title6,
+.card-title7 {
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+    margin-bottom: 20px;
+}
+
+
+/* ---------- WEATHER ICON ---------- */
+
+.card-text1:first-of-type,
+.card-text2:first-of-type,
+.card-text3:first-of-type,
+.card-text4:first-of-type,
+.card-text5:first-of-type,
+.card-text6:first-of-type,
+.card-text7:first-of-type {
+    font-size: 2.5rem;
+
+    margin-bottom: 20px;
+}
+
+
+/* ---------- TEMPERATURE ---------- */
+
+.card small {
+    color: var(--text-secondary);
+
+    font-size: 0.85rem;
+
+    line-height: 1.8;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    max-width: 1200px;
+
+    margin: 60px auto 0;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+    border-top: 1px solid var(--border-color);
+
+    font-size: 0.9rem;
+}
+
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px 15px;
+    }
+
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+
+    .currentweather {
+        padding: 30px 20px;
+    }
+
+
+    .currentweather h2 {
+        font-size: 1.6rem;
+    }
+
+
+    .currentweather p {
+        font-size: 2.3rem;
+    }
+
+
+    .forecast-container {
+        justify-content: flex-start;
+
+        flex-wrap: nowrap;
+
+        overflow-x: auto;
+
+        padding: 10px 5px 20px;
+    }
+
+
+    .card {
+        flex: 0 0 150px;
+
+        min-width: 150px;
+    }
+
+
+    .forecast-container::-webkit-scrollbar {
+        height: 6px;
+    }
+
+
+    .forecast-container::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+
+        border-radius: 10px;
+    }
+
+
+    .forecast-container::-webkit-scrollbar-track {
+        background-color: var(--bg-secondary);
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+
+    header input[type="search"] {
+        padding: 14px;
+    }
+
+
+    .currentweather {
+        padding: 25px 15px;
+    }
+
+
+    .currentweather p {
+        font-size: 2rem;
+    }
+
+
+    .nextforecast h3 {
+        font-size: 1.3rem;
+    }
+
+
+    footer {
+        font-size: 0.8rem;
+    }
+
+}
